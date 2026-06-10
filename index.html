@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Han Dian (UK) — Premium Taiwanese Frozen Food Manufacturer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0c0a;
+    --dark: #1a1612;
+    --dark-2: #241f1a;
+    --dark-3: #2e2822;
+    --warm-white: #f5f0e8;
+    --cream: #ede7d9;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --gold-muted: #8a6f35;
+    --red: #8b2020;
+    --red-bright: #c13030;
+    --brown: #5c3d2e;
+    --brown-light: #7a5240;
+    --text-primary: #f5f0e8;
+    --text-secondary: #b8a98a;
+    --text-muted: #7a6e5e;
+    --border: rgba(201, 168, 76, 0.2);
+    --border-strong: rgba(201, 168, 76, 0.4);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 48px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    backdrop-filter: blur(0px);
+    border-bottom: 0.5px solid transparent;
+    transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(14, 12, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
+
+  .nav-logo-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--warm-white);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold) !important;
+    border: 0.5px solid var(--gold-muted);
+    padding: 8px 20px;
+    transition: background 0.2s, color 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--black) !important;
+  }
+
+  /* ─── HERO ENTRANCE ANIMATION ─── */
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-eyebrow,
+  .hero-title,
+  .hero-desc,
+  .hero-actions {
+    opacity: 0;
+    animation: heroFadeUp 0.8s ease forwards;
+  }
+
+  .hero-eyebrow  { animation-delay: 0.2s; }
+  .hero-title    { animation-delay: 0.45s; }
+  .hero-desc     { animation-delay: 0.7s; }
+  .hero-actions  { animation-delay: 0.9s; }
+
+  /* ─── HAMBURGER ─── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--warm-white);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    nav {
+      padding: 0 24px;
+    }
+
+    .nav-hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0;
+      background: rgba(14,12,10,0.97);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 16px 0 32px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 16px 24px;
+      font-size: 14px;
+    }
+
+    .nav-cta {
+      margin: 8px 24px 0;
+      display: block;
+      text-align: center;
+      padding: 12px 24px !important;
+    }
+
+    .hero {
+      min-height: 100svh;
+    }
+
+    .hero-left {
+      padding: 120px 24px 140px;
+      max-width: 100%;
+    }
+
+    .hero::after {
+      mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    }
+
+    .hero-badge {
+      bottom: 100px;
+      right: 20px;
+    }
+
+    .hero-badge img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .stats-bar-inner {
+      padding: 32px 24px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .stats-bar-item {
+      flex: 1 1 40%;
+    }
+
+    .stats-bar-divider {
+      display: none;
+    }
+
+    .pain-inner, .process-inner, .faq-inner,
+    .services-inner {
+      padding: 64px 24px;
+    }
+
+    .pain-grid,
+    .process-steps,
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pain-card {
+      border-right: none;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .pain-card:last-child {
+      border-bottom: none;
+    }
+
+    .section {
+      padding: 64px 24px;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .news-inner {
+      padding: 64px 24px;
+    }
+
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-list {
+      max-width: 100%;
+    }
+
+    .cta-section {
+      padding: 80px 24px;
+    }
+
+    footer {
+      padding: 32px 24px;
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .footer-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-image: url('handian-images/series-beef-noodle-soup.png');
+    background-attachment: scroll;
+    background-position: center 50%;
+    background-size: cover;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(14,12,10,0.7) 0%, transparent 20%),
+      linear-gradient(to right, rgba(14,12,10,0.9) 0%, rgba(14,12,10,0.5) 50%, rgba(14,12,10,0) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    mask-image: linear-gradient(to right, black 0%, black 30%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to right, black 0%, black 30%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 64px 160px 64px;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(48px, 5.5vw, 80px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--warm-white);
+    margin-bottom: 32px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 420px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--warm-white); }
+
+  .btn-ghost svg { transition: transform 0.2s; }
+  .btn-ghost:hover svg { transform: translateX(4px); }
+
+  .hero-stats {
+    margin-top: 72px;
+    display: flex;
+    gap: 48px;
+    padding-top: 36px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .stat-item {}
+
+  .stat-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--warm-white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    display: none;
+  }
+
+  .hero-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--black) 0%, transparent 35%),
+                linear-gradient(to top, rgba(14,12,10,0.5) 0%, transparent 50%);
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 160px;
+    right: 48px;
+    z-index: 2;
+  }
+
+  .hero-marquee {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+    border-bottom: none;
+    background: rgba(14,12,10,0.6);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-badge img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  }
+
+  .hero-badge-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .hero-badge-award {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-section {
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 16px 0;
+    overflow: hidden;
+    background: var(--dark);
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    animation: marquee 28s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+
+  .marquee-logo {
+    width: 160px;
+    height: 72px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: invert(1) grayscale(1) opacity(0.55);
+    transition: filter 0.2s;
+  }
+
+  .marquee-logo:hover {
+    filter: invert(1) grayscale(1) opacity(1);
+  }
+
+  .marquee-logo[alt="KK Orchard"] {
+    width: 130px;
+    height: 56px;
+  }
+
+  .marquee-logo[alt="Nong Lai"] {
+    width: 200px;
+    height: 90px;
+  }
+
+  .marquee-logo[alt="Regent Taipei"] {
+    width: 96px;
+    height: 53px;
+    padding: 0 48px;
+    box-sizing: content-box;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.333%); }
+  }
+
+  /* ─── PARTNERS ─── */
+  .section {
+    padding: 100px 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 560px;
+  }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--dark-2);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .stats-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .stats-bar-item {
+    flex: 1;
+    text-align: center;
+  }
+
+  .stats-bar-num {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 500;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stats-bar-label {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .stats-bar-fadein {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .stats-bar.animated .stats-bar-fadein {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stats-bar.animated .stats-bar-fadein:nth-child(1) { transition-delay: 0.3s; }
+  .stats-bar.animated .stats-bar-fadein:nth-child(2) { transition-delay: 0.5s; }
+
+  .stats-bar-divider {
+    width: 0.5px;
+    height: 48px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-section {
+    background: var(--dark);
+  }
+
+  .services-inner {
+    padding: 100px 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .service-card {
+    background: var(--dark);
+    padding: 48px 40px;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover { background: var(--dark-2); }
+
+  .service-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: var(--dark-3);
+    line-height: 1;
+    margin-bottom: 24px;
+    transition: color 0.3s;
+  }
+
+  .service-card:hover .service-num { color: rgba(201, 168, 76, 0.15); }
+
+  .service-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 28px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    text-decoration: none;
+    transition: color 0.2s, gap 0.2s;
+  }
+
+  .service-link:hover { color: var(--gold); gap: 10px; }
+
+  /* ─── PRODUCTS ─── */
+  .products-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background: var(--dark-2);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    filter: brightness(0.8) saturate(0.85);
+  }
+
+  .product-card:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.7) saturate(1);
+  }
+
+  .product-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(14,12,10,0.9) 0%, transparent 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px 28px;
+  }
+
+  .product-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .product-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--warm-white);
+    line-height: 1.15;
+  }
+
+  /* ─── NEWS ─── */
+  .news-section {
+    background: var(--dark);
+  }
+
+  .news-inner {
+    padding: 100px 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .news-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .news-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    group: true;
+  }
+
+  .news-card-img {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: var(--dark-3);
+    margin-bottom: 20px;
+  }
+
+  .news-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.3s;
+    filter: brightness(0.85) saturate(0.8);
+  }
+
+  .news-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.75) saturate(1);
+  }
+
+  .news-card-meta {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    margin-bottom: 10px;
+  }
+
+  .news-card-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--warm-white);
+    transition: color 0.2s;
+  }
+
+  .news-card:hover .news-card-title { color: var(--gold-light); }
+
+  .news-card-featured .news-card-title { font-size: 20px; }
+
+  /* ─── PAIN POINTS ─── */
+  .pain-section {
+    background: var(--dark);
+  }
+
+  .pain-inner, .process-inner, .faq-inner {
+    padding: 100px 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 56px;
+    border: 0.5px solid var(--border);
+  }
+
+  .pain-card {
+    padding: 48px 40px;
+    border-right: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .pain-card:last-child { border-right: none; }
+
+  .pain-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--border-strong);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .pain-heading {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .pain-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .pain-solution {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  /* ─── PROCESS ─── */
+  .process-section {
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 64px;
+    margin-top: 56px;
+  }
+
+  .process-step {
+    position: relative;
+  }
+
+  .process-step-num {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .process-step-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .process-step-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-section {
+    background: var(--dark);
+  }
+
+  .faq-list {
+    margin-top: 56px;
+    max-width: 860px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .faq-item {
+    border-bottom: 0.5px solid var(--border);
+    padding: 28px 0;
+    cursor: pointer;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--warm-white);
+    line-height: 1.5;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-top: 16px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+  }
+
+  .faq-item.open .faq-answer { max-height: 200px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    padding: 120px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 32, 32, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 24px;
+  }
+
+  .cta-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cta-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 48px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--dark);
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── SECTION DIVIDER ─── */
+  .divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 0 64px;
+  }
+
+  /* ─── PARTNERS LOGOS ─── */
+  .partners-row {
+    margin-top: 56px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .partner-logo {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(1) opacity(0.7);
+    mix-blend-mode: lighten;
+    transition: filter 0.2s;
+  }
+
+  .partner-logo:hover {
+    filter: grayscale(1) opacity(1);
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://i0.wp.com/handian.co.uk/wp-content/uploads/2024/03/logo-1.png?fit=144%2C144&ssl=1" alt="Han Dian">
+    <span class="nav-logo-text">HAN DIAN (UK)</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Taiwanese Craftsmanship, UK Made</div>
+    <h1 class="hero-title">
+      Premium Frozen<br>
+      Food <em>Manufacturer</em><br>
+      & Wholesale
+    </h1>
+    <p class="hero-desc">
+      From our London factory to restaurant kitchens across Europe — authentic Taiwanese & Chinese flavours, engineered for scale.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Explore Products</a>
+      <a href="#" class="btn-ghost">
+        Partner with us
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <img src="handian-images/great-taste-award-badge-2025.webp" alt="Great Taste Award 1 Star 2025">
+  </div>
+
+  <!-- LOGO MARQUEE inside hero -->
+  <div class="marquee-section hero-marquee">
+  <div class="marquee-track">
+    <img class="marquee-logo" src="handian-images/logo-chun-shui-tang.png" alt="Chun Shui Tang">
+    <img class="marquee-logo" src="handian-images/logo-nong-lai.png" alt="Nong Lai">
+    <img class="marquee-logo" src="handian-images/logo-shan-shin.png" alt="Shan Shin">
+    <img class="marquee-logo" src="handian-images/logo-kk-orchard-v2.png" alt="KK Orchard">
+    <img class="marquee-logo" src="handian-images/logo-chimei.png" alt="Chimei">
+    <img class="marquee-logo" src="handian-images/logo-regent-taipei.svg" alt="Regent Taipei">
+    <img class="marquee-logo" src="handian-images/logo-chun-shui-tang.png" alt="Chun Shui Tang">
+    <img class="marquee-logo" src="handian-images/logo-nong-lai.png" alt="Nong Lai">
+    <img class="marquee-logo" src="handian-images/logo-shan-shin.png" alt="Shan Shin">
+    <img class="marquee-logo" src="handian-images/logo-kk-orchard-v2.png" alt="KK Orchard">
+    <img class="marquee-logo" src="handian-images/logo-chimei.png" alt="Chimei">
+    <img class="marquee-logo" src="handian-images/logo-regent-taipei.svg" alt="Regent Taipei">
+    <img class="marquee-logo" src="handian-images/logo-chun-shui-tang.png" alt="Chun Shui Tang">
+    <img class="marquee-logo" src="handian-images/logo-nong-lai.png" alt="Nong Lai">
+    <img class="marquee-logo" src="handian-images/logo-shan-shin.png" alt="Shan Shin">
+    <img class="marquee-logo" src="handian-images/logo-kk-orchard-v2.png" alt="KK Orchard">
+    <img class="marquee-logo" src="handian-images/logo-chimei.png" alt="Chimei">
+    <img class="marquee-logo" src="handian-images/logo-regent-taipei.svg" alt="Regent Taipei">
+  </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stats-bar-item">
+      <div class="stats-bar-num" data-count="20" data-suffix="+">0+</div>
+      <div class="stats-bar-label">Years of R&D</div>
+    </div>
+    <div class="stats-bar-divider"></div>
+    <div class="stats-bar-item">
+      <div class="stats-bar-num" data-count="66" data-suffix="+">0+</div>
+      <div class="stats-bar-label">Products</div>
+    </div>
+    <div class="stats-bar-divider"></div>
+    <div class="stats-bar-item">
+      <div class="stats-bar-num stats-bar-fadein">UK & EU</div>
+      <div class="stats-bar-label">Distribution Ready</div>
+    </div>
+    <div class="stats-bar-divider"></div>
+    <div class="stats-bar-item">
+      <div class="stats-bar-num stats-bar-fadein">SALSA</div>
+      <div class="stats-bar-label">Certified</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<div class="services-section">
+  <div class="services-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Three Ways to<br><em style="font-style:italic; font-family:'Cormorant Garamond',serif;">Work With Us</em></h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-name">Retail & Wholesale Supply</div>
+        <p class="service-desc">Ready-to-stock frozen products for supermarkets, Asian grocers, and food distributors across the UK and Europe.</p>
+        <a href="#" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-name">Restaurant & Catering</div>
+        <p class="service-desc">Consistent, easy-to-prepare products designed to reduce kitchen labour and expand menus without sacrificing quality.</p>
+        <a href="#" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-name">OEM & ODM Manufacturing</div>
+        <p class="service-desc">Custom flavour development, private-label production, and full supply chain support — from recipe to retail-ready packaging.</p>
+        <a href="#" class="service-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<div class="pain-section reveal">
+  <div class="pain-inner">
+  <div class="section-eyebrow">Why Restaurants Choose Us</div>
+  <h2 class="section-title">The Challenges We Solve</h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-num">01</div>
+      <div class="pain-heading">Rising ingredient & food costs</div>
+      <div class="pain-body">Inflation is squeezing margins across the industry, making consistent quality harder to maintain.</div>
+      <div class="pain-solution">→ Unified bulk purchasing and mass production keeps costs low without compromising quality.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">02</div>
+      <div class="pain-heading">Increasing overheads — rent, utilities, space</div>
+      <div class="pain-body">Growing operational costs are forcing restaurants to do more with less kitchen space and resource.</div>
+      <div class="pain-solution">→ Simple, ready-to-use products optimise your kitchen footprint and reduce prep complexity.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">03</div>
+      <div class="pain-heading">Skilled kitchen labour is harder to find</div>
+      <div class="pain-body">Recruiting and retaining experienced kitchen staff remains one of the biggest challenges in hospitality.</div>
+      <div class="pain-solution">→ Our ready-to-cook range requires minimal training, so any team member can deliver consistent results.</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="process-section reveal">
+  <div class="process-inner">
+  <div class="section-eyebrow">How It Works</div>
+  <h2 class="section-title">From First Call to<br><em style="font-style:italic; font-family:'Cormorant Garamond',serif;">Full Menu</em></h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="process-step-num">Step 01</div>
+      <div class="process-step-title">Online Consultation</div>
+      <div class="process-step-desc">Talk to our sales team to explore our product range, receive detailed guidance, and identify the best fit for your menu and kitchen operation.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">Step 02</div>
+      <div class="process-step-title">In-Kitchen Training</div>
+      <div class="process-step-desc">Our team visits your kitchen to co-test products, design service SOPs, and establish a smooth meal prep workflow tailored to your team.</div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">Step 03</div>
+      <div class="process-step-title">Expand & Optimise</div>
+      <div class="process-step-desc">Launch new dishes with confidence. We help you grow your menu, serve more customers, and streamline your kitchen from prep to plate.</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PRODUCTS -->
+<div class="section reveal">
+  <div class="section-eyebrow">Our Range</div>
+  <h2 class="section-title">Popular Products</h2>
+  <p class="section-subtitle">From classic xiao long bao to Taiwanese beef noodle soup — made in London, tasting like home.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="handian-images/series-taiwanese-sausage.png" alt="Taiwanese Sausage">
+      <div class="product-overlay">
+        <div class="product-tag">Street Food</div>
+        <div class="product-name">Taiwanese Pork Sausage</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="handian-images/series-beef-noodle-soup.png" alt="Beef Noodle Soup">
+      <div class="product-overlay">
+        <div class="product-tag">Ready Meal</div>
+        <div class="product-name">Tomato Beef Noodle Soup</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="handian-images/series-taiwanese.png" alt="Taiwanese Street Classics">
+      <div class="product-overlay">
+        <div class="product-tag">Street Food</div>
+        <div class="product-name">Taiwanese Street Classics</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- NEWS -->
+<div class="news-section">
+  <div class="news-inner reveal">
+    <div class="news-header">
+      <div>
+        <div class="section-eyebrow">Latest</div>
+        <h2 class="section-title">News & Events</h2>
+      </div>
+      <a href="#" class="btn-ghost" style="margin-bottom: 8px;">
+        View all news
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="news-grid">
+      <a href="#" class="news-card news-card-featured">
+        <div class="news-card-img">
+          <img src="handian-images/news-ife-2026.png" alt="IFE 2026">
+        </div>
+        <div class="news-card-meta">March 30, 2026</div>
+        <div class="news-card-title">Han Dian Debuts at IFE 2026, Opening a New Chapter in Global Trade</div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-img">
+          <img src="handian-images/news-great-taste-2025.png" alt="Great Taste Award">
+        </div>
+        <div class="news-card-meta">August 11, 2025</div>
+        <div class="news-card-title">Tomato Beef Noodles Earns Great Taste Awards Star Rating</div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-img">
+          <img src="handian-images/news-ife-2025.png" alt="IFE 2025">
+        </div>
+        <div class="news-card-meta">March 4, 2025</div>
+        <div class="news-card-title">Han Dian at IFE 2025, Expanding Global Market Presence</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section reveal">
+  <div class="faq-inner">
+  <div class="section-eyebrow">FAQ</div>
+  <h2 class="section-title">Common Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-question">
+        What are the shelf life and storage requirements?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">Products can be frozen for up to 15 months after production. Once thawed and refrigerated, they must be used within 3 days. After heating, they should be consumed within one meal.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        How do you handle delivery and minimum orders?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">We deliver weekly to London via our own frozen logistics, with third-party cold chain coverage across the rest of the UK. European export is available for commercial partners. Get in touch for MOQ details and a tailored quote.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        What sales channels are available for B2B partners?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">Our products reach restaurants, caterers, Asian grocers, and distributors across the UK and Europe. We also support wholesale and own-label distribution with retail-ready packaging. Talk to us to find the right fit for your business.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        Can you produce custom flavours or private-label products?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">Yes — we welcome OEM and ODM requests. We can design custom flavours and enable large-scale production under your brand. Contact our sales team to get started.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        Where can I buy Han Dian products in the UK?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">You can order directly through OOLIOS, our online supermarket, which delivers Taiwanese cuisine to designated UK addresses. Selected products are also available at local Asian supermarkets.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        Are Han Dian products available in Europe?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">Han Dian products can be exported to major European cities for commercial partners. For general consumers, we currently ship within the UK mainland only. Please contact our sales team for European distribution enquiries.</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <div class="cta-inner">
+    <h2 class="cta-title">Ready to bring <em>Taiwanese flavour</em> to your menu?</h2>
+    <p class="cta-desc">Whether you're a restaurant, retailer, or building your own brand — we're ready to supply, partner, and manufacture at scale.</p>
+    <a href="#" class="btn-primary">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Han Dian (UK) Ltd. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="mailto:office@handian.co.uk">office@handian.co.uk</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const nav = document.querySelector('nav');
+const hero = document.querySelector('.hero');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  // Nav transparent → solid
+  nav.classList.toggle('scrolled', scrollY > 40);
+
+  // Hero parallax — background moves at 30% of scroll speed
+  if (scrollY < hero.offsetHeight) {
+    hero.style.backgroundPositionY = `calc(50% + ${scrollY * 0.3}px)`;
+  }
+}, { passive: true });
+
+// Stats counter animation
+const statsBar = document.querySelector('.stats-bar');
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      statsBar.classList.add('animated');
+      document.querySelectorAll('.stats-bar-num[data-count]').forEach((el, i) => {
+        const target = parseInt(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const delay = i * 150;
+        setTimeout(() => {
+          const start = performance.now();
+          const tick = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(ease * target) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }, delay);
+      });
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+statsObserver.observe(statsBar);
+
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+
+</body>
+</html>
