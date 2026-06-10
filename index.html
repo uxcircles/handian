@@ -31,6 +31,134 @@
     --border-strong: rgba(201, 168, 76, 0.4);
   }
 
+  /* ─── LIGHT MODE ─── */
+  body.light-mode {
+    --black: #faf7f2;
+    --dark: #f0ebe2;
+    --dark-2: #e8e1d6;
+    --dark-3: #ddd5c8;
+    --warm-white: #2a1f14;
+    --cream: #3d2e1e;
+    --gold: #9a6f28;
+    --gold-light: #b8860b;
+    --gold-muted: #c4973a;
+    --text-primary: #2a1f14;
+    --text-secondary: #5c4a35;
+    --text-muted: #8a7560;
+    --border: rgba(154, 111, 40, 0.2);
+    --border-strong: rgba(154, 111, 40, 0.4);
+    background: var(--black);
+    color: var(--text-primary);
+  }
+
+  body.light-mode nav {
+    background: transparent;
+  }
+
+  body.light-mode nav:not(.scrolled) .nav-logo-text,
+  body.light-mode nav:not(.scrolled) .nav-links a {
+    color: #b8a98a;
+  }
+
+  body.light-mode nav:not(.scrolled) .nav-cta {
+    color: #c9a84c !important;
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  body.light-mode nav.scrolled {
+    background: rgba(250, 247, 242, 0.92);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  body.light-mode .hero::before {
+    background:
+      linear-gradient(to bottom, rgba(14,12,10,0.3) 0%, transparent 20%),
+      linear-gradient(to right, rgba(14,12,10,0.75) 0%, rgba(14,12,10,0.4) 50%, rgba(14,12,10,0) 100%);
+  }
+
+  body.light-mode .hero-eyebrow {
+    color: #c9a84c;
+  }
+
+  body.light-mode .hero-eyebrow::before {
+    background: #c9a84c;
+  }
+
+  body.light-mode .hero-title,
+  body.light-mode .hero-desc {
+    color: #f5f0e8;
+  }
+
+  body.light-mode .hero-title em {
+    color: #e8c96a;
+  }
+
+  body.light-mode .hero::after {
+    mask-image: linear-gradient(to right, black 0%, black 30%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to right, black 0%, black 30%, transparent 70%);
+  }
+
+  body.light-mode .hero-marquee {
+    background: rgba(250,247,242,0.6);
+    border-top: 0.5px solid rgba(154,111,40,0.2);
+  }
+
+  body.light-mode .hero-marquee {
+    background: rgba(240, 235, 226, 0.85);
+    backdrop-filter: blur(12px);
+    border-top: 0.5px solid rgba(154,111,40,0.15);
+  }
+
+  body.light-mode .marquee-logo {
+    filter: grayscale(1) opacity(0.85);
+  }
+
+  body.light-mode .marquee-logo:hover {
+    filter: grayscale(0) opacity(1);
+  }
+
+  body.light-mode .product-card img {
+    filter: brightness(0.95) saturate(1.1);
+  }
+
+  body.light-mode .news-card img {
+    filter: brightness(0.95) saturate(1.1);
+  }
+
+  body.light-mode .product-name {
+    color: #f5f0e8;
+  }
+
+  body.light-mode .product-tag {
+    color: #e8c96a;
+  }
+
+  body.light-mode .service-card:hover .service-num {
+    color: rgba(154, 111, 40, 0.25);
+  }
+
+  /* Toggle button */
+  .theme-toggle {
+    background: none;
+    border: 0.5px solid var(--border-strong);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    background: var(--border);
+    color: var(--gold);
+  }
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -316,7 +444,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    background-image: url('handian-images/series-beef-noodle-soup.png');
+    background-image: url('handian-images/hearty-beef-noodle-soup-with-carrots-and-scallions.webp');
     background-attachment: scroll;
     background-position: center 50%;
     background-size: cover;
@@ -421,20 +549,22 @@
   .btn-primary:hover { background: var(--gold-light); }
 
   .btn-ghost {
-    display: inline-block;
+    display: inline-flex;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: rgba(245, 240, 232, 0.7);
     text-decoration: none;
-    display: flex;
     align-items: center;
     gap: 8px;
     transition: color 0.2s;
   }
 
-  .btn-ghost:hover { color: var(--warm-white); }
+  .btn-ghost:hover { color: #f5f0e8; }
+
+  body.light-mode .hero-actions .btn-ghost { color: rgba(245, 240, 232, 0.75); }
+  body.light-mode .hero-actions .btn-ghost:hover { color: #f5f0e8; }
 
   .btn-ghost svg { transition: transform 0.2s; }
   .btn-ghost:hover svg { transform: translateX(4px); }
@@ -947,6 +1077,7 @@
 
   /* ─── PROCESS ─── */
   .process-section {
+    background: var(--dark);
   }
 
   .process-steps {
@@ -1043,6 +1174,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    background: var(--dark);
   }
 
   .cta-section::before {
@@ -1061,6 +1193,15 @@
     z-index: 1;
     max-width: 640px;
     margin: 0 auto;
+  }
+
+  .cta-tagline {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
   }
 
   .cta-title {
@@ -1166,15 +1307,18 @@
     <img src="https://i0.wp.com/handian.co.uk/wp-content/uploads/2024/03/logo-1.png?fit=144%2C144&ssl=1" alt="Han Dian">
     <span class="nav-logo-text">HAN DIAN (UK)</span>
   </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#">About</a></li>
-    <li><a href="#">Products</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">News</a></li>
-    <li><a href="#" class="nav-cta">Contact Us</a></li>
-  </ul>
-  <div class="nav-hamburger" id="hamburger" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
-    <span></span><span></span><span></span>
+  <div style="display:flex;align-items:center;gap:24px;">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">☀️</button>
+    <div class="nav-hamburger" id="hamburger" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
@@ -1294,21 +1438,21 @@
   <div class="pain-grid">
     <div class="pain-card">
       <div class="pain-num">01</div>
-      <div class="pain-heading">Rising ingredient & food costs</div>
-      <div class="pain-body">Inflation is squeezing margins across the industry, making consistent quality harder to maintain.</div>
-      <div class="pain-solution">→ Unified bulk purchasing and mass production keeps costs low without compromising quality.</div>
+      <div class="pain-heading">Your ingredient costs are spiralling.</div>
+      <div class="pain-body">Every menu reprint costs you margin. Inflation isn't stopping — and neither is the pressure on your bottom line.</div>
+      <div class="pain-solution">→ Bulk purchasing and mass production lock in quality at a price that protects your margins.</div>
     </div>
     <div class="pain-card">
       <div class="pain-num">02</div>
-      <div class="pain-heading">Increasing overheads — rent, utilities, space</div>
-      <div class="pain-body">Growing operational costs are forcing restaurants to do more with less kitchen space and resource.</div>
-      <div class="pain-solution">→ Simple, ready-to-use products optimise your kitchen footprint and reduce prep complexity.</div>
+      <div class="pain-heading">Your kitchen costs are out of control.</div>
+      <div class="pain-body">Rent, utilities, space — every square metre needs to work harder. Complexity is the enemy of profit.</div>
+      <div class="pain-solution">→ Ready-to-use products simplify your kitchen, cut waste, and let you do more with less.</div>
     </div>
     <div class="pain-card">
       <div class="pain-num">03</div>
-      <div class="pain-heading">Skilled kitchen labour is harder to find</div>
-      <div class="pain-body">Recruiting and retaining experienced kitchen staff remains one of the biggest challenges in hospitality.</div>
-      <div class="pain-solution">→ Our ready-to-cook range requires minimal training, so any team member can deliver consistent results.</div>
+      <div class="pain-heading">Good kitchen staff are impossible to keep.</div>
+      <div class="pain-body">Turnover is high, training takes time, and one bad service costs you customers. You can't afford to depend on skill.</div>
+      <div class="pain-solution">→ Our ready-to-cook range needs no chef. Any team member can deliver consistent, restaurant-quality results.</div>
     </div>
   </div>
   </div>
@@ -1471,7 +1615,8 @@
 <!-- CTA -->
 <section class="cta-section reveal">
   <div class="cta-inner">
-    <h2 class="cta-title">Ready to bring <em>Taiwanese flavour</em> to your menu?</h2>
+    <div class="cta-tagline">Authentic. Scalable. Profitable.</div>
+    <h2 class="cta-title">Bring <em>Taiwan</em> to<br>Your Menu.</h2>
     <p class="cta-desc">Whether you're a restaurant, retailer, or building your own brand — we're ready to supply, partner, and manufacture at scale.</p>
     <a href="#" class="btn-primary">Get in Touch</a>
   </div>
@@ -1498,6 +1643,13 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+});
 
 const nav = document.querySelector('nav');
 const hero = document.querySelector('.hero');
