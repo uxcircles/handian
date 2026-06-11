@@ -569,6 +569,11 @@
   body.light-mode .hero-actions .btn-ghost { color: rgba(245, 240, 232, 0.75); }
   body.light-mode .hero-actions .btn-ghost:hover { color: #f5f0e8; }
 
+  body.light-mode .pain-card {
+    background: rgba(255, 255, 255, 0.55);
+    border: 0.5px solid rgba(180, 155, 100, 0.3);
+  }
+
   .btn-ghost svg { transition: transform 0.2s; }
   .btn-ghost:hover svg { transform: translateX(4px); }
 
@@ -699,8 +704,8 @@
   }
 
   .marquee-logo[alt="Regent Taipei"] {
-    width: 96px;
-    height: 53px;
+    width: 80px;
+    height: 44px;
     padding: 0 48px;
     box-sizing: content-box;
   }
@@ -1020,6 +1025,26 @@
   /* ─── PAIN POINTS ─── */
   .pain-section {
     background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pain-section::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background-image: url('handian-images/xiao-long-bao-classic-pork.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    z-index: 0;
+    will-change: transform;
+    transform: translateY(var(--pain-parallax, 0px));
+  }
+
+  .pain-section .pain-inner {
+    position: relative;
+    z-index: 1;
   }
 
   .pain-inner, .process-inner, .faq-inner {
@@ -1031,15 +1056,29 @@
   .pain-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 16px;
     margin-top: 56px;
-    border: 0.5px solid var(--border);
   }
 
   .pain-card {
     padding: 48px 40px;
-    border-right: 0.5px solid var(--border);
     position: relative;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  /* Pain cards: only translateY, keep opacity at 1 so blur renders */
+  .pain-grid.stagger-children > * {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+
+  .pain-grid.stagger-children.visible > * {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .pain-card:last-child { border-right: none; }
@@ -1300,6 +1339,37 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Stagger children */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; }
+  .stagger-children.visible > *:nth-child(2) { transition-delay: 120ms; }
+  .stagger-children.visible > *:nth-child(3) { transition-delay: 240ms; }
+  .stagger-children.visible > *:nth-child(4) { transition-delay: 360ms; }
+
+  .stagger-children.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Section header stagger */
+  .stagger-header {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .stagger-header.delay-1 { transition-delay: 100ms; }
+
+  .stagger-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 </head>
 <body>
@@ -1407,10 +1477,10 @@
 <div class="services-section">
   <div class="services-inner">
     <div class="reveal">
-      <div class="section-eyebrow">What We Do</div>
-      <h2 class="section-title">Three Ways to<br><em style="font-style:italic; font-family:'Cormorant Garamond',serif;">Work With Us</em></h2>
+      <div class="section-eyebrow stagger-header">What We Do</div>
+      <h2 class="section-title stagger-header delay-1">Three Ways to<br><em style="font-style:italic; font-family:'Cormorant Garamond',serif;">Work With Us</em></h2>
     </div>
-    <div class="services-grid reveal">
+    <div class="services-grid reveal stagger-children">
       <div class="service-card">
         <div class="service-num">01</div>
         <div class="service-name">Retail & Wholesale Supply</div>
@@ -1436,9 +1506,9 @@
 <!-- PAIN POINTS -->
 <div class="pain-section reveal">
   <div class="pain-inner">
-  <div class="section-eyebrow">Why Restaurants Choose Us</div>
-  <h2 class="section-title">The Challenges We Solve</h2>
-  <div class="pain-grid">
+  <div class="section-eyebrow stagger-header reveal">Why Restaurants Choose Us</div>
+  <h2 class="section-title stagger-header delay-1 reveal">The Challenges We Solve</h2>
+  <div class="pain-grid stagger-children">
     <div class="pain-card">
       <div class="pain-num">01</div>
       <div class="pain-heading">Your ingredient costs are spiralling.</div>
@@ -1464,9 +1534,9 @@
 <!-- PROCESS -->
 <div class="process-section reveal">
   <div class="process-inner">
-  <div class="section-eyebrow">How It Works</div>
-  <h2 class="section-title">From First Call to<br><em style="font-style:italic; font-family:'Cormorant Garamond',serif;">Full Menu</em></h2>
-  <div class="process-steps">
+  <div class="section-eyebrow stagger-header reveal">How It Works</div>
+  <h2 class="section-title stagger-header delay-1 reveal">From First Call to<br><em style="font-style:italic; font-family:'Cormorant Garamond',serif;">Full Menu</em></h2>
+  <div class="process-steps stagger-children reveal">
     <div class="process-step">
       <div class="process-step-num">Step 01</div>
       <div class="process-step-title">Online Consultation</div>
@@ -1490,10 +1560,10 @@
 
 <!-- PRODUCTS -->
 <div class="section section-dark reveal">
-  <div class="section-eyebrow">Our Range</div>
-  <h2 class="section-title">Popular Products</h2>
-  <p class="section-subtitle">From classic Taiwanese sausage to beef noodle soup — made in the UK, tasting like home.</p>
-  <div class="products-grid">
+  <div class="section-eyebrow stagger-header reveal">Our Range</div>
+  <h2 class="section-title stagger-header delay-1 reveal">Popular Products</h2>
+  <p class="section-subtitle stagger-header delay-1 reveal">From classic Taiwanese sausage to beef noodle soup — made in the UK, tasting like home.</p>
+  <div class="products-grid stagger-children reveal">
     <div class="product-card">
       <img src="handian-images/series-taiwanese-sausage.png" alt="Taiwanese Sausage">
       <div class="product-overlay">
@@ -1525,8 +1595,8 @@
   <div class="news-inner reveal">
     <div class="news-header">
       <div>
-        <div class="section-eyebrow">Latest</div>
-        <h2 class="section-title">News & Events</h2>
+        <div class="section-eyebrow stagger-header reveal">Latest</div>
+        <h2 class="section-title stagger-header delay-1 reveal">News & Events</h2>
       </div>
       <a href="#" class="btn-ghost" style="margin-bottom: 8px;">
         View all news
@@ -1535,7 +1605,7 @@
         </svg>
       </a>
     </div>
-    <div class="news-grid">
+    <div class="news-grid stagger-children reveal">
       <a href="#" class="news-card news-card-featured">
         <div class="news-card-img">
           <img src="handian-images/news-ife-2026.png" alt="IFE 2026">
@@ -1645,7 +1715,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal, .stagger-header, .stagger-children').forEach(el => observer.observe(el));
 
 // Theme toggle
 const themeToggle = document.getElementById('themeToggle');
@@ -1666,6 +1736,17 @@ window.addEventListener('scroll', () => {
   // Hero parallax — background moves at 30% of scroll speed
   if (scrollY < hero.offsetHeight) {
     hero.style.backgroundPositionY = `calc(58% + ${scrollY * 0.3}px)`;
+  }
+
+  // Pain section parallax
+  const painSection = document.querySelector('.pain-section');
+  if (painSection) {
+    const painBg = painSection.querySelector(':scope > .pain-inner')?.previousElementSibling;
+    const rect = painSection.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.2;
+      painSection.style.setProperty('--pain-parallax', `${offset}px`);
+    }
   }
 }, { passive: true });
 
